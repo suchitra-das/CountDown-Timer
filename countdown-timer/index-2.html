@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countdown time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+    <h1 class="text-4xl font-bold mb-6 text-green-500" >Suchitra Birthday Eve</h1>
+    <div class="flex space-x-6">
+        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-md">
+            <p class="text-5xl font-bold" id="days">0</p>
+            <span class="text-lg">Days</span>
+        </div>
+        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-md">
+            <p class="text-5xl font-bold" id="hours">0</p>
+            <span class="text-lg">Hours</span>
+        </div>
+        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-md">
+            <p class="text-5xl font-bold" id="mins">0</p>
+            <span class="text-lg">Minutes</span>
+        </div>
+        <div class="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-md">
+            <p class="text-5xl font-bold" id="seconds">0</p>
+            <span class="text-lg">Seconds</span>
+        </div>
+    </div>
+
+
+
+
+<script>
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minsEl = document.getElementById("mins");
+        const secondsEl = document.getElementById("seconds");
+        
+        const newYears = "2 may 2025";
+
+        function countdown(){
+            const newYearsDate =new Date(newYears);
+            const currentDate =new Date()
+
+
+            const totalSeconds = (newYearsDate-currentDate)/1000;
+             const days = Math.floor(totalSeconds/3600/24);
+             const hours =Math.floor(totalSeconds/3600)%24;
+             const mins = Math.floor(totalSeconds/60)%60;
+             const seconds =Math.floor(totalSeconds)%60;
+
+
+
+
+            daysEl.innerHTML = days;
+            hoursEl.innerHTML = hours;
+            minsEl.innerHTML = mins;
+            secondsEl.innerHTML = seconds;
+        }
+
+
+        countdown()
+        setInterval(countdown, 1000)
+    </script>
+</body>
+</html>
