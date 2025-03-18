@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    
+
+
+   </style>
+</head>
+
+
+
+<body>
+
+  <div class="container">
+    <div id="question"></div>
+    <button id="btn">Next</button>
+    <button id="backbtn">Previous</button>
+</div>
+
+<script>
+    
+    const quizData = [
+    {
+        question: "What is the most used programming language in 2019?",
+        a: "Java",
+        b: "C",
+        c: "Python",
+        d: "JavaScript",
+        correct: "d",
+    },
+    {
+        question: "Who is the President of US?",
+        a: "Florin Pop",
+        b: "Donald Trump",
+        c: "Ivan Saldano",
+        d: "Mihai Andrei",
+        correct: "b",
+    },
+    {
+        question: "What does HTML stand for?",
+        a: "Hypertext Markup Language",
+        b: "Cascading Style Sheet",
+        c: "Jason Object Notation",
+        d: "Helicopters Terminals Motorboats Lamborginis",
+        correct: "a",
+    },
+    {
+        question: "What year was JavaScript launched?",
+        a: "1996",
+        b: "1995",
+        c: "1994",
+        d: "none of the above",
+        correct: "b",
+    },
+];
+
+let data = 0;
+
+
+const quizContainer = document.querySelector(".container");
+const nextBtn = document.getElementById("btn");
+const prvBtn = document.getElementById("backbtn");
+const questionContainer = document.getElementById("question");
+
+function loadQuestion() {
+    const currentQuestion = quizData[data];
+    questionContainer.innerHTML = `
+        <div>
+            <div>Question ${data + 1}: ${currentQuestion.question}</div>
+            <div><input type="radio" name="answer" value="a"> a. ${currentQuestion.a}</div>
+            <div><input type="radio" name="answer" value="b"> b. ${currentQuestion.b}</div>
+            <div><input type="radio" name="answer" value="c"> c. ${currentQuestion.c}</div>
+            <div><input type="radio" name="answer" value="d"> d. ${currentQuestion.d}</div>
+        </div>
+    `;
+}
+
+function checkAnswer() {
+    const selectedAnswer = document.querySelector('input[name="answer"]:checked');  
+    if (selectedAnswer) {
+        const answerValue = selectedAnswer.value;
+        const currentQuestion = quizData[data];
+        
+        if (answerValue === currentQuestion.correct) {
+            data++;
+        } else {
+            alert("You selected the wrong answer");
+        }
+    } else {
+        alert("Please select an answer!");
+    }
+}
+
+nextBtn.addEventListener("click", () => {
+    checkAnswer(); 
+    if (data < quizData.length - 1) {
+        data++;
+        loadQuestion();
+    } else {
+        alert("You have completed the quiz");
+    }
+});
+
+prvBtn.addEventListener("click", () => {
+    if (data > 0) {
+        data--;
+        loadQuestion();
+    } else {
+        alert("You are at the first question!");
+    }
+});
+
+loadQuestion(); 
+
+
+
+
+</script>
+
+</body>
+</html>

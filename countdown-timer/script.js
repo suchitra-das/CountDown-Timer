@@ -26,7 +26,7 @@ function countdown(){
     secondsEl.innerHTML =fomatTime(seconds);
     
     
-    // console.log(days, hours,mins,seconds);
+    console.log(days, hours,mins,seconds);
 
 
 }
